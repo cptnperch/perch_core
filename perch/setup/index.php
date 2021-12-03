@@ -1,57 +1,33 @@
 <?php
+	header('Location: server/');
+	exit;
+?><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link media="all" rel="stylesheet" href="../core/assets/css/styles.css">
+    <!--[if IE]><link rel="stylesheet" href="../core/assets/css/ie9.css"><![endif]-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Setup Error</title>
+</head>
+<body>
+<div class="page-setup">
 
-    require_once __DIR__ . '/../core/inc/pre_config.php';
-    
-    if (file_exists(__DIR__ . '/../config/config.php')) {
-        include_once(__DIR__ . '/../config/config.php');   
-    }
+<div class="setup-box">
+    <div class="logo">
+    	<img src="../core/assets/img/logo.png" alt="Perch" width="110">
+    </div>
+    <div class="hd">
+    	<h1>Sorry&hellip;</h1>
+    </div>
+    <div class="bd">
+    	<p>
+    		Your server does not understand, or is not configured to run PHP files. Setup cannot continue in this environment.
+    	</p>
+    </div>
+</div>
 
-    require_once __DIR__ . '/../core/lib/PerchUtil.class.php';
-    require_once __DIR__ . '/../core/lib/PerchLang.class.php';
-    require_once __DIR__ . '/../core/lib/Perch.class.php';
-    require_once __DIR__ . '/../core/lib/PerchSession.class.php';
-    require_once __DIR__ . '/../core/lib/PerchForm.class.php';
+</div>
 
-    if (file_exists(__DIR__ . '/../core/runway/runtime.php')) {
-        // Double-check for PHP5.
-        if (version_compare(PHP_VERSION, '5.4.0', '<')) {
-            die('Perch Runway requires PHP 5.4 or greater to install. You have: PHP ' . PHP_VERSION);
-        }    
-
-        PerchUtil::redirect('runway/');
-    }else{
-
-        // Double-check for PHP5.
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            die('Perch requires PHP 5.3 or greater to install. You have: PHP ' . PHP_VERSION);
-        }    
-        
-    }
-
-    if (!defined('PERCH_PATH')) {
-        define('PERCH_PATH', realpath('../'));
-        define('PERCH_CORE', PERCH_PATH.DIRECTORY_SEPARATOR.'core');
-        define('PERCH_RUNWAY', false);
-    }
-    
-    define('PERCH_ERROR_MODE', 'SILENT');
-
-    $Perch  = new Perch;
-
-
-    include(PERCH_PATH . '/core/inc/loader.php');
-
-
-    $mode = 'gather';
-    
-    if (isset($_GET['install'])) {
-        $mode = 'install';
-    }
-
-
-    include('modes/'.$mode.'.pre.php');
-    include('top.php');
-    
-    include('modes/'.$mode.'.post.php');    
-    
-    include('btm.php');
+</body>
+</html>

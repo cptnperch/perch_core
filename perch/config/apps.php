@@ -1,5 +1,3 @@
 <?php
-	$apps_list = array(
-		'content', 
-		'categories',
-	);
+	$apps_list = [ 
+	];
